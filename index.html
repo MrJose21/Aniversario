@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro Libro de Recuerdos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="collage-background"></div>
+
+    <div id="login-container" class="glass-box">
+        <div class="icono-iglesia">🕊️<span class="cross-icon">✝️</span>🕊️</div>
+        <h2>Entrar a nuestros recuerdos</h2>
+        
+        <input type="text" id="username" placeholder="Tu usuario">
+        <input type="password" id="password" placeholder="Tu contraseña">
+        
+        <button onclick="iniciarSesion()">Abrir Libro</button>
+        
+        <p id="error-msg" class="error-oculto">Datos incorrectos, mi amor ❤️</p>
+    </div>
+
+    <div id="libro-container" style="display: none;">
+        <div class="escena-libro">
+            <div id="el-libro" class="libro" onclick="abrirLibro()">
+                
+                <div class="portada">
+                    <div class="esquina tl"></div>
+                    <div class="esquina tr"></div>
+                    <div class="esquina bl"></div>
+                    <div class="esquina br"></div>
+                    
+                    <div class="centro-religioso">
+                        <h1>Feliz aniversario mi amor</h1>
+                        <div class="adorno-central">🕊️ ✝️ 🕊️</div>
+                        <p>Espero te guste mi regalo</p>
+                    </div>
+                </div>
+
+                <div class="pagina-interior">
+                    <h2 class="titulo-capitulo">Nuestra Historia</h2>
+                    <p>Aquí comenzará a escribirse nuestro recuerdo...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
