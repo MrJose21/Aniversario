@@ -7,11 +7,19 @@ body, html {
 
 /* FONDO Y LOGIN */
 .collage-background {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('collage_iglesia.jpg'); 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    /* URL CORREGIDO PARA ACCESO DIRECTO */
+    background-image: url('https://raw.githubusercontent.com/MrJose21/Aniversario/ec06a218d0b8ffce763cdddf139987ab5c707913/collage_iglesia.jpg'); 
     background-color: rgba(255, 182, 193, 0.4); 
-    background-blend-mode: color; background-size: cover;
-    z-index: 0; pointer-events: none;
+    background-blend-mode: color; 
+    background-size: cover;
+    background-position: center; /* Asegura que la imagen siempre esté centrada */
+    z-index: 0; 
+    pointer-events: none;
 }
 
 /* --- LOGIN CORREGIDO --- */
@@ -108,7 +116,7 @@ button { width: 100%; padding: 14px; margin-top: 15px; background-color: #8e5f38
 
 /* Animación de la tapa abriéndose */
 .libro.abierto .portada {
-    transform: rotateY(-160deg); /* Abre la tapa hacia la izquierda */
+    transform: rotateY(-180deg); /* Abre la tapa hacia la izquierda */
     box-shadow: 10px 10px 20px rgba(0,0,0,0.4);
 }
 
@@ -193,3 +201,23 @@ button { width: 100%; padding: 14px; margin-top: 15px; background-color: #8e5f38
     border-bottom: 2px solid #8e5f38;
     padding-bottom: 10px;
 }
+
+.hoja {
+    position: absolute; width: 100%; height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-origin: left;
+    z-index: 1;
+}
+
+.hoja.girada { transform: rotateY(-180deg); }
+
+.pagina-izquierda, .pagina-derecha {
+    position: absolute; width: 50%; height: 100%;
+    backface-visibility: hidden;
+}
+.pagina-izquierda { left: 0; background: #fff; }
+.pagina-derecha { right: 0; background: #f4e8d1; }
+
+/* Aseguramos que la imagen no se deforme */
+.pagina-izquierda img { width: 100%; height: 100%; object-fit: cover; }
