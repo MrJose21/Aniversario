@@ -16,12 +16,9 @@
     <div id="login-container" class="glass-box">
         <div class="icono-iglesia">🕊️<span class="cross-icon">✝️</span>🕊️</div>
         <h2>Entrar a nuestros recuerdos</h2>
-        
         <input type="text" id="username" placeholder="Tu usuario">
         <input type="password" id="password" placeholder="Tu contraseña">
-        
         <button onclick="iniciarSesion()">Abrir Libro</button>
-        
         <p id="error-msg" class="error-oculto">Datos incorrectos, mi amor ❤️</p>
     </div>
 
@@ -42,15 +39,22 @@
                     </div>
                 </div>
 
-                <div class="pagina-interior">
-                    <h2 class="titulo-capitulo">Feliz aniversario </h2>
-                    <p>Buenas mi amor, te presento nuestro libro de recuerdos
-                       donde espero puedas pasartela bien leyendo y viendo
-                       este es mi regalo, espero puedas disfrutarlo mucho
+                <div id="paginas-container">
+                    <div class="pagina-interior" id="pagina1">
+                        <h2 class="titulo-capitulo">Feliz aniversario</h2>
+                        <p>Buenas mi amor, te presento nuestro libro de recuerdos
+                       donde espero puedas pasartela bien puedas disfrutarlo mucho
                        preparo esto con todo el amor del mundo y demostrarte siempre
-                       el amor que tengo por ti ❤️...  
-                    </p>
+                       el amor que tengo por ti ❤️...  </p>
+                        <button class="btn-siguiente" onclick="pasarPagina(event)">Siguiente</button>
+                    </div>
+                    
+                    <div class="pagina-interior" id="pagina2" style="display:none;">
+                        <h2 class="titulo-capitulo">Capítulo 2</h2>
+                        <p>El contenido de tu nueva hoja va aquí...</p>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
