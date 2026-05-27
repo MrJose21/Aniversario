@@ -1,67 +1,36 @@
 function iniciarSesion() {
-    // Convierte el usuario a minúsculas para evitar errores si escriben mayúsculas por accidente
     const user = document.getElementById("username").value.toLowerCase();
     const pass = document.getElementById("password").value;
     const errorMsg = document.getElementById("error-msg");
 
-    // USUARIO 1 (Debe estar escrito estrictamente en minúsculas aquí en el código)
-    const usuario1 = "dayana rojas";
-    const clave1 = "FelizAniversar";
-
-    // USUARIO 2 (Debe estar escrito estrictamente en minúsculas aquí en el código)
-    const usuario2 = "jose";
-    const clave2 = "5678";
-
-    // Validamos si ingresaron alguno de los dos
-    if ((user === usuario1 && pass === clave1) || (user === usuario2 && pass === clave2)) {
-        
-        // 1. Ocultamos el login
+    if ((user === "dayana rojas" && pass === "FelizAniversar") || (user === "jose" && pass === "5678")) {
         document.getElementById("login-container").style.display = "none";
-        
-        // 2. Mostramos el contenedor del libro
         document.getElementById("libro-container").style.display = "block";
-        
-        // 3. Ocultamos el collage de fondo (actualizado al nombre correcto) y ponemos el fondo café
         document.querySelector(".collage-background").style.display = "none";
-        document.body.style.backgroundColor = "#3e2723"; /* Un café oscuro elegante */
-        
+        document.body.style.backgroundColor = "#2b1b17"; 
     } else {
-        // Si se equivocan, mostramos el mensaje de error
         errorMsg.style.display = "block";
     }
 }
 
-// Función para abrir el libro mágico con efecto 3D
+let libroAbierto = false;
+let zIndexContador = 20; // Inicializado en 20 para sincronizar las 10 hojas dinámicamente
+
 function abrirLibro() {
-    const libro = document.getElementById("el-libro");
-    libro.classList.add("abierto");
-}
-
-let paginaActual = 1;
-
-function pasarPagina(event) {
-    event.stopPropagation(); // IMPORTANTE: evita que se dispare el onclick del libro
-    
-    // Ocultar página actual
-    document.getElementById("pagina" + paginaActual).style.display = "none";
-    
-    // Incrementar
-    paginaActual++;
-    
-    // Mostrar siguiente (si existe)
-    const proxima = document.getElementById("pagina" + paginaActual);
-    if (proxima) {
-        proxima.style.display = "block";
-    } else {
-        alert("Has llegado al final");
+    if (!libroAbierto) {
+        document.getElementById("el-libro").classList.add("abierto");
+        document.getElementById("hoja-portada").classList.add("girada");
+        libroAbierto = true;
     }
 }
 
-function pasarHoja(idHoja) {
+function pasarPagina(event, idHoja) {
+    event.stopPropagation(); // Previene activar eventos del contenedor principal
     const hoja = document.getElementById(idHoja);
-    // Agregamos la clase que hace la animación
-    hoja.classList.add('girada');
     
-    // Opcional: Si quieres que al girar se cargue algo más o se oculte el botón
-    event.stopPropagation();
+    if (!hoja.classList.contains('girada')) {
+        hoja.classList.add('girada');
+        zIndexContador++;
+        hoja.style.zIndex = zIndexContador; // Superpone la hoja volteada sobre las anteriores
+    }
 }
