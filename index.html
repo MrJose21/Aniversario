@@ -26,33 +26,158 @@
         <div class="escena-libro">
             <div id="el-libro" class="libro" onclick="abrirLibro()">
                 
-                <div class="portada">
-                    <div class="esquina tl"></div>
-                    <div class="esquina tr"></div>
-                    <div class="esquina bl"></div>
-                    <div class="esquina br"></div>
-                    
-                    <div class="centro-religioso">
-                        <h1>Feliz aniversario mi amor</h1>
-                        <div class="adorno-central">🕊️ ✝️ 🕊️</div>
-                        <p>Espero te guste mi regalo</p>
+                <div class="libro-base">
+                    <div class="esquina tl"></div><div class="esquina tr"></div>
+                    <div class="esquina bl"></div><div class="esquina br"></div>
+                </div>
+
+                <div class="hoja" id="hoja-portada" style="z-index: 20;">
+                    <div class="frente-portada">
+                        <div class="centro-religioso">
+                            <h1>Feliz aniversario mi amor</h1>
+                            <div class="adorno-central">🕊️ ✝️ 🕊️</div>
+                            <p>Espero te guste mi regalo</p>
+                        </div>
+                    </div>
+                    <div class="dorso-pagina">
+                        <div class="papel-foto">
+                            <div class="esquinera-foto top-left"></div><div class="esquinera-foto top-right"></div>
+                            <div class="esquinera-foto bottom-left"></div><div class="esquinera-foto bottom-right"></div>
+                            <img src="tu_foto_1.jpg" alt="Nuestro recuerdo 1">
+                        </div>
                     </div>
                 </div>
 
-                <div id="paginas-container">
-                    <div class="pagina-interior" id="pagina1">
-                        <h2 class="titulo-capitulo">Feliz aniversario</h2>
-                        <p>Buenas mi amor, te presento nuestro libro de recuerdos
-                       donde espero puedas pasartela bien puedas disfrutarlo mucho
-                       preparo esto con todo el amor del mundo y demostrarte siempre
-                       el amor que tengo por ti ❤️...  </p>
-                        <button class="btn-siguiente" onclick="pasarPagina(event)">Siguiente</button>
+                <div class="hoja" id="hoja1" style="z-index: 19;">
+                    <div class="frente-pagina">
+                        <h2 class="titulo-capitulo">Feliz Aniversario</h2>
+                        <p class="texto-libro">Buenas mi amor, te presento nuestro libro de recuerdos donde espero puedas pasártela bien y disfrutes mucho. Preparé esto con todo el amor del mundo para demostrarte siempre el gran amor que tengo por ti 💖...</p>
+                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja1')">Siguiente</button>
                     </div>
-                    
-                    <div class="pagina-interior" id="pagina2" style="display:none;">
+                    <div class="dorso-pagina">
+                        <div class="papel-foto">
+                            <div class="esquinera-foto top-left"></div><div class="esquinera-foto top-right"></div>
+                            <div class="esquinera-foto bottom-left"></div><div class="esquinera-foto bottom-right"></div>
+                            <img src="tu_foto_2.jpg" alt="Nuestro recuerdo 2">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hoja" id="hoja2" style="z-index: 18;">
+                    <div class="frente-pagina">
                         <h2 class="titulo-capitulo">Capítulo 2</h2>
-                        <p>El contenido de tu nueva hoja va aquí...</p>
+                        <p class="texto-libro">Aquí puedes escribir un segundo momento hermoso de su historia, cómo empezó todo o dedicarle unas palabras especiales sobre un día inolvidable juntos...</p>
+                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja2')">Siguiente</button>
                     </div>
+                    <div class="dorso-pagina">
+                        <div class="papel-foto">
+                            <div class="esquinera-foto top-left"></div><div class="esquinera-foto top-right"></div>
+                            <div class="esquinera-foto bottom-left"></div><div class="esquinera-foto bottom-right"></div>
+                            <img src="tu_foto_3.jpg" alt="Nuestro recuerdo 3">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hoja" id="hoja3" style="z-index: 17;">
+                    <div class="frente-pagina">
+                        <h2 class="titulo-capitulo">Capítulo 3</h2>
+                        <p class="texto-libro">Escribe aquí otra hermosa dedicatoria para acompañar la siguiente foto de la izquierda...</p>
+                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja3')">Siguiente</button>
+                    </div>
+                    <div class="dorso-pagina">
+                        <div class="papel-foto">
+                            <div class="esquinera-foto top-left"></div><div class="esquinera-foto top-right"></div>
+                            <div class="esquinera-foto bottom-left"></div><div class="esquinera-foto bottom-right"></div>
+                            <img src="tu_foto_4.jpg" alt="Nuestro recuerdo 4">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hoja" id="hoja4" style="z-index: 16;">
+                    <div class="frente-pagina">
+                        <h2 class="titulo-capitulo">Capítulo 4</h2>
+                        <p class="texto-libro">Espacio para colocar más hermosas palabras que describan su amor y complicidad...</p>
+                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja4')">Siguiente</button>
+                    </div>
+                    <div class="dorso-pagina">
+                        <div class="papel-foto">
+                            <div class="esquinera-foto top-left"></div><div class="esquinera-foto top-right"></div>
+                            <div class="esquinera-foto bottom-left"></div><div class="esquinera-foto bottom-right"></div>
+                            <img src="tu_foto_5.jpg" alt="Nuestro recuerdo 5">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hoja" id="hoja5" style="z-index: 15;">
+                    <div class="frente-pagina">
+                        <h2 class="titulo-capitulo">Capítulo 5</h2>
+                        <p class="texto-libro">Continúa tu historia aquí. Cada página es una oportunidad para recordarle lo especial que es para ti...</p>
+                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja5')">Siguiente</button>
+                    </div>
+                    <div class="dorso-pagina">
+                        <div class="papel-foto">
+                            <div class="esquinera-foto top-left"></div><div class="esquinera-foto top-right"></div>
+                            <div class="esquinera-foto bottom-left"></div><div class="esquinera-foto bottom-right"></div>
+                            <img src="tu_foto_6.jpg" alt="Nuestro recuerdo 6">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hoja" id="hoja6" style="z-index: 14;">
+                    <div class="frente-pagina">
+                        <h2 class="titulo-capitulo">Capítulo 6</h2>
+                        <p class="texto-libro">Más textos, anécdotas divertidas de sus viajes, citas o momentos en los que supiste que era el amor de tu vida...</p>
+                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja6')">Siguiente</button>
+                    </div>
+                    <div class="dorso-pagina">
+                        <div class="papel-foto">
+                            <div class="esquinera-foto top-left"></div><div class="esquinera-foto top-right"></div>
+                            <div class="esquinera-foto bottom-left"></div><div class="esquinera-foto bottom-right"></div>
+                            <img src="tu_foto_7.jpg" alt="Nuestro recuerdo 7">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hoja" id="hoja7" style="z-index: 13;">
+                    <div class="frente-pagina">
+                        <h2 class="titulo-capitulo">Capítulo 7</h2>
+                        <p class="texto-libro">Escribe libremente aquí lo que dicte tu corazón para esta página del libro...</p>
+                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja7')">Siguiente</button>
+                    </div>
+                    <div class="dorso-pagina">
+                        <div class="papel-foto">
+                            <div class="esquinera-foto top-left"></div><div class="esquinera-foto top-right"></div>
+                            <div class="esquinera-foto bottom-left"></div><div class="esquinera-foto bottom-right"></div>
+                            <img src="tu_foto_8.jpg" alt="Nuestro recuerdo 8">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hoja" id="hoja8" style="z-index: 12;">
+                    <div class="frente-pagina">
+                        <h2 class="titulo-capitulo">Capítulo 8</h2>
+                        <p class="texto-libro">Ya nos acercamos al final de este viaje digital, escribe algo muy emotivo aquí...</p>
+                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja8')">Siguiente</button>
+                    </div>
+                    <div class="dorso-pagina">
+                        <div class="papel-foto">
+                            <div class="esquinera-foto top-left"></div><div class="esquinera-foto top-right"></div>
+                            <div class="esquinera-foto bottom-left"></div><div class="esquinera-foto bottom-right"></div>
+                            <img src="tu_foto_9.jpg" alt="Nuestro recuerdo 9">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hoja" id="hoja9" style="z-index: 11;">
+                    <div class="frente-pagina">
+                        <h2 class="titulo-capitulo">Por Siempre Juntos</h2>
+                        <p class="texto-libro" style="text-align: center; font-style: italic; font-size: 15px; margin-top: 30px;">
+                            "Gracias por cada sonrisa, por cada oración compartida y por ser mi compañera idónea. Le pido a Dios que este sea solo el inicio de una eternidad a tu lado. Te amo con toda mi alma."
+                        </p>
+                        <div style="font-size: 40px; text-align: center; margin-top: 20px;">❤️🔒✨</div>
+                        </div>
+                    <div class="dorso-pagina" style="background: linear-gradient(135deg, #3e2723 0%, #2a160c 100%);">
+                        </div>
                 </div>
 
             </div>
