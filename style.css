@@ -1,223 +1,149 @@
 /* CONFIGURACIONES GENERALES */
-body, html {
-    margin: 0; padding: 0; height: 100%;
-    display: flex; justify-content: center; align-items: center;
-    font-family: 'Poppins', sans-serif;
-}
+* { box-sizing: border-box; }
+body, html { margin: 0; padding: 0; height: 100%; display: flex; justify-content: center; align-items: center; font-family: 'Poppins', sans-serif; overflow: hidden; }
 
 /* FONDO Y LOGIN */
-.collage-background {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    /* URL CORREGIDO PARA ACCESO DIRECTO */
-    background-image: url('https://raw.githubusercontent.com/MrJose21/Aniversario/ec06a218d0b8ffce763cdddf139987ab5c707913/collage_iglesia.jpg'); 
-    background-color: rgba(255, 182, 193, 0.4); 
-    background-blend-mode: color; 
-    background-size: cover;
-    background-position: center; /* Asegura que la imagen siempre esté centrada */
-    z-index: 0; 
-    pointer-events: none;
-}
+.collage-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://raw.githubusercontent.com/MrJose21/Aniversario/ec06a218d0b8ffce763cdddf139987ab5c707913/collage_iglesia.jpg'); background-color: rgba(255, 182, 193, 0.4); background-blend-mode: color; background-size: cover; background-position: center; z-index: 0; pointer-events: none; }
 
-/* --- LOGIN CORREGIDO --- */
-.glass-box {
-    position: relative; 
-    z-index: 1;
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 20px; 
-    padding: 40px 25px; /* Reduje un poco el padding lateral */
-    width: 320px;       /* Mantenemos tu medida */
-    text-align: center;
-    display: flex;      /* Importante para alinear */
-    flex-direction: column; /* Apila elementos hacia abajo */
-    align-items: center;    /* Centra los elementos horizontalmente */
-    box-sizing: border-box; /* ESTO ES LO QUE ARREGLA EL ESTIRADO */
-}
-
-/* Ajuste adicional para que los inputs no se vean estirados */
-input { 
-    width: 100%; 
-    padding: 12px; 
-    margin: 8px 0; /* Un poco menos de margen */
-    border: none; 
-    border-radius: 10px; 
-    background: rgba(255, 255, 255, 0.9); 
-    outline: none; 
-    box-sizing: border-box; /* Vital para que el padding no rompa el ancho */
-}
-
-/* ESTILOS DE ELEMENTOS */
+.glass-box { position: relative; z-index: 100; background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 20px; padding: 40px 25px; width: 320px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+input { width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 10px; background: rgba(255, 255, 255, 0.9); outline: none; }
 .icono-iglesia { font-size: 20px; margin-bottom: 20px; color: rgba(255, 255, 255, 0.8); }
 .cross-icon { display: inline-block; width: 28px; height: 28px; background-color: #9c27b0; border-radius: 6px; margin: 0 10px; font-size: 16px; }
 h2 { font-family: 'Playfair Display', serif; color: #4a2f1d; font-size: 24px; }
-input { width: 100%; padding: 14px; margin: 10px 0; border: none; border-radius: 10px; background: rgba(255, 255, 255, 0.9); outline: none; }
 button { width: 100%; padding: 14px; margin-top: 15px; background-color: #8e5f38; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; }
 .error-oculto { color: #b71c1c; display: none; margin-top: 20px; }
 
-/* =========================================
-   LA MAGIA DEL LIBRO 3D (EFECTO DISNEY)
-========================================= */
+/* ESTRUCTURA 3D BLINDADA (640PX FIJOS) */
+.escena-libro { display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; perspective: 2000px; }
 
-.escena-libro {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    perspective: 1200px; /* Crea la profundidad 3D */
-}
-
-/* Estructura del libro flotante */
 .libro {
-    width: 320px;
-    height: 450px;
+    width: 640px; 
+    height: 460px;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 1.5s ease-in-out;
     cursor: pointer;
-    /* Animación de flotar constantemente */
-    animation: flotar 4s ease-in-out infinite;
 }
 
-/* La animación mágica de levitación */
-@keyframes flotar {
-    0%, 100% { transform: translateY(0px) rotateX(10deg) rotateY(-10deg); }
-    50% { transform: translateY(-20px) rotateX(15deg) rotateY(-5deg); box-shadow: 0 40px 50px rgba(0,0,0,0.6); }
+/* Animación de balanceo solo cuando está cerrado */
+.libro:not(.abierto) {
+    animation: flotarCerrado 4s ease-in-out infinite;
+}
+@keyframes flotarCerrado {
+    0%, 100% { transform: translateX(-160px) rotateX(10deg) rotateY(-10deg); }
+    50% { transform: translateX(-160px) rotateX(13deg) rotateY(-5deg) translateY(-10px); }
 }
 
-/* Cuando le damos clic al libro para abrirlo */
+/* Centrado automático al abrir */
 .libro.abierto {
-    animation: none; /* Deja de flotar */
-    /* Se acerca y se mueve un poco a la derecha para dar espacio a la tapa */
-    transform: scale(1.2) translateX(80px) rotateX(5deg) rotateY(0deg); 
+    transform: translateX(0px) rotateX(0deg) rotateY(0deg) scale(1.02);
 }
 
-/* DISEÑO DE LA PORTADA (Inspiración Enchiridion) */
-.portada {
+/* BASE RÍGIDA TRASERA DE CUERO */
+.libro-base {
     position: absolute;
     width: 100%;
     height: 100%;
-    /* Textura de cuero café viejo */
+    left: 0;
+    top: 0;
     background: linear-gradient(135deg, #5c3a21 0%, #3e2723 100%);
-    border-radius: 5px 15px 15px 5px;
-    transform-origin: left; /* Para que gire como una bisagra desde la izquierda */
-    transition: transform 1.5s ease-in-out, box-shadow 1.5s;
     border: 3px solid #2a160c;
-    box-shadow: inset 0 0 40px rgba(0,0,0,0.8), 15px 15px 30px rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-}
-
-/* Animación de la tapa abriéndose */
-.libro.abierto .portada {
-    transform: rotateY(-180deg); /* Abre la tapa hacia la izquierda */
-    box-shadow: 10px 10px 20px rgba(0,0,0,0.4);
-}
-
-/* Placas de metal en las esquinas */
-.esquina {
-    position: absolute;
-    width: 45px; height: 45px;
-    background: linear-gradient(135deg, #a8a9ad, #55565a); /* Metal plateado viejo */
-    border: 2px solid #222;
-}
-.esquina::after {
-    content: "•"; /* Simulamos un tornillo o remache */
-    position: absolute;
-    color: #111;
-    font-size: 24px;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-}
-.tl { top: -2px; left: -2px; border-bottom-right-radius: 25px; }
-.tr { top: -2px; right: -2px; border-bottom-left-radius: 25px; }
-.bl { bottom: -2px; left: -2px; border-top-right-radius: 25px; }
-.br { bottom: -2px; right: -2px; border-top-left-radius: 25px; }
-
-/* El Círculo Religioso Central */
-.centro-religioso {
-    width: 80%;
-    height: 75%;
-    border: 3px double #d4af37; /* Borde dorado */
-    border-radius: 20px; /* Bordes redondeados elegantes */
-    background: rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-}
-
-.centro-religioso h1 {
-    font-family: 'Playfair Display', serif;
-    color: #e8c37d; /* Letras doradas viejo */
-    font-size: 28px;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-.adorno-central {
-    font-size: 45px;
-    margin-bottom: 20px;
-    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.8)); /* Sombra a los emojis */
-}
-
-.centro-religioso p {
-    font-family: 'Poppins', sans-serif;
-    color: #d8c29d;
-    font-size: 16px;
-    font-style: italic;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-}
-
-/* LA PÁGINA INTERIOR (El papel que se ve al abrir) */
-.pagina-interior {
-    position: absolute;
-    width: 96%;
-    height: 96%;
-    top: 2%; left: 2%;
-    background-color: #f4e8d1; /* Papel pergamino claro */
-    border-radius: 3px 10px 10px 3px;
+    border-radius: 12px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 0 40px rgba(0,0,0,0.6);
+    opacity: 0;
+    transition: opacity 0.5s ease;
     z-index: 1;
-    box-shadow: inset 0 0 30px rgba(139, 69, 19, 0.3); /* Sombra café en los bordes */
-    padding: 40px;
-    box-sizing: border-box;
+    pointer-events: none;
+}
+.libro.abierto .libro-base { opacity: 1; }
+
+.libro-base::after {
+    content: ''; position: absolute; left: 50%; top: 0; width: 30px; height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.25), transparent, rgba(0,0,0,0.25));
+    transform: translateX(-50%);
 }
 
-.titulo-capitulo {
-    color: #4a2f1d;
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    border-bottom: 2px solid #8e5f38;
-    padding-bottom: 10px;
-}
-
+/* SISTEMA DE PÁGINAS */
 .hoja {
-    position: absolute; width: 100%; height: 100%;
+    position: absolute;
+    width: 320px;
+    height: 96%;
+    top: 2%;
+    left: 320px;
     transform-style: preserve-3d;
+    transform-origin: left center;
     transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-    transform-origin: left;
-    z-index: 1;
 }
-
 .hoja.girada { transform: rotateY(-180deg); }
 
-.pagina-izquierda, .pagina-derecha {
-    position: absolute; width: 50%; height: 100%;
-    backface-visibility: hidden;
+.frente-portada, .frente-pagina, .dorso-pagina {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; -webkit-backface-visibility: hidden;
 }
-.pagina-izquierda { left: 0; background: #fff; }
-.pagina-derecha { right: 0; background: #f4e8d1; }
 
-/* Aseguramos que la imagen no se deforme */
-.pagina-izquierda img { width: 100%; height: 100%; object-fit: cover; }
+/* Tapa principal */
+.frente-portada {
+    background: linear-gradient(135deg, #5c3a21 0%, #3e2723 100%);
+    border: 3px solid #2a160c;
+    border-radius: 0 12px 12px 0;
+    display: flex; justify-content: center; align-items: center;
+    transform: translateZ(1px);
+    box-shadow: inset -10px 0 30px rgba(0,0,0,0.5);
+}
+
+/* Páginas de texto */
+.frente-pagina {
+    background-color: #f5edd6; 
+    padding: 35px 30px; display: flex; flex-direction: column;
+    border-radius: 0 10px 10px 0;
+    transform: translateZ(1px);
+    box-shadow: inset -15px 0 20px rgba(139, 69, 19, 0.05), 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Páginas de fotos (Volteadas) */
+.dorso-pagina {
+    transform: rotateY(180deg) translateZ(1px); 
+    background-color: #f5edd6;
+    padding: 20px; display: flex; justify-content: center; align-items: center;
+    border-radius: 10px 0 0 10px;
+    box-shadow: inset 15px 0 20px rgba(139, 69, 19, 0.05), 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ESTILO POLAROID RETRO */
+.papel-foto {
+    position: relative; width: 92%; height: 94%; background-color: #faf6ee;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); padding: 12px;
+    display: flex; justify-content: center; align-items: center;
+}
+.papel-foto img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; display: block; overflow: hidden; }
+
+/* Esquineras de fotos doradas/marrones de Canva */
+.esquinera-foto { position: absolute; width: 22px; height: 22px; border: 3px solid #8e5f38; z-index: 10; }
+.top-left { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+.top-right { top: 8px; right: 8px; border-left: none; border-bottom: none; }
+.bottom-left { bottom: 8px; left: 8px; border-right: none; border-top: none; }
+.bottom-right { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+
+/* TIPOGRAFÍAS */
+.titulo-capitulo { color: #4a2f1d; font-family: 'Playfair Display', serif; text-align: center; border-bottom: 2px solid #cbb295; padding-bottom: 8px; margin-top: 10px; font-size: 24px; }
+.texto-libro { color: #5a4030; font-size: 14px; line-height: 1.6; text-align: justify; font-family: 'Poppins', sans-serif; margin-top: 15px; }
+
+.btn-siguiente {
+    margin-top: auto; align-self: flex-end; width: auto; padding: 7px 22px;
+    background-color: #8e5f38; color: white; border: none; border-radius: 6px;
+    cursor: pointer; font-weight: 600; font-family: 'Poppins', sans-serif; box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* DETALLES DE LAS ESQUINAS METÁLICAS DE LA BASE */
+.esquina { position: absolute; width: 35px; height: 35px; background: linear-gradient(135deg, #cbd5e1, #94a3b8); border: 2px solid #64748b; }
+.esquina::after { content: "•"; position: absolute; color: #475569; font-size: 12px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.tl { top: -2px; left: -2px; border-bottom-right-radius: 15px; }
+.tr { top: -2px; right: -2px; border-bottom-left-radius: 15px; }
+.bl { bottom: -2px; left: -2px; border-top-right-radius: 15px; }
+.br { bottom: -2px; right: -2px; border-top-left-radius: 15px; }
+
+/* MARCO INTERIOR DE LA PORTADA */
+.centro-religioso { width: 88%; height: 84%; border: 3px double #d4af37; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 15px; }
+.centro-religioso h1 { font-family: 'Playfair Display', serif; color: #f3dfa2; font-size: 24px; margin-bottom: 15px; }
+.adorno-central { font-size: 30px; margin-bottom: 15px; }
+.centro-religioso p { color: #d1bfa7; font-size: 13px; font-style: italic; }
