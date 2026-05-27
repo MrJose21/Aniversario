@@ -36,3 +36,32 @@ function abrirLibro() {
     const libro = document.getElementById("el-libro");
     libro.classList.add("abierto");
 }
+
+let paginaActual = 1;
+
+function pasarPagina(event) {
+    event.stopPropagation(); // IMPORTANTE: evita que se dispare el onclick del libro
+    
+    // Ocultar página actual
+    document.getElementById("pagina" + paginaActual).style.display = "none";
+    
+    // Incrementar
+    paginaActual++;
+    
+    // Mostrar siguiente (si existe)
+    const proxima = document.getElementById("pagina" + paginaActual);
+    if (proxima) {
+        proxima.style.display = "block";
+    } else {
+        alert("Has llegado al final");
+    }
+}
+
+function pasarHoja(idHoja) {
+    const hoja = document.getElementById(idHoja);
+    // Agregamos la clase que hace la animación
+    hoja.classList.add('girada');
+    
+    // Opcional: Si quieres que al girar se cargue algo más o se oculte el botón
+    event.stopPropagation();
+}
