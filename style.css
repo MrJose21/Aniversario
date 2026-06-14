@@ -13,6 +13,51 @@ h2 { font-family: 'Playfair Display', serif; color: #4a2f1d; font-size: 24px; }
 button { width: 100%; padding: 14px; margin-top: 15px; background-color: #8e5f38; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; }
 .error-oculto { color: #b71c1c; display: none; margin-top: 20px; }
 
+/* ===== FLORES DECORATIVAS EN EL ENTORNO DEL LIBRO ===== */
+#flores-entorno {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.flor-svg {
+    position: absolute;
+    opacity: 0;
+    animation: florecerFlor 3s ease forwards, mecerFlor 6s ease-in-out infinite;
+}
+
+/* Aparición suave al entrar */
+@keyframes florecerFlor {
+    0%   { opacity: 0; transform: scale(0.4) rotate(0deg); }
+    60%  { opacity: 1; transform: scale(1.08) rotate(5deg); }
+    100% { opacity: 0.85; transform: scale(1) rotate(0deg); }
+}
+
+/* Balanceo continuo suave */
+@keyframes mecerFlor {
+    0%, 100% { transform: rotate(-4deg) translateY(0px); }
+    50%       { transform: rotate(4deg) translateY(-8px); }
+}
+
+/* Retardo escalonado para que no aparezcan todas a la vez */
+.flor-svg:nth-child(1)  { animation-delay: 0.2s, 0.5s; }
+.flor-svg:nth-child(2)  { animation-delay: 0.5s, 1.0s; }
+.flor-svg:nth-child(3)  { animation-delay: 0.8s, 1.5s; }
+.flor-svg:nth-child(4)  { animation-delay: 1.1s, 0.8s; }
+.flor-svg:nth-child(5)  { animation-delay: 1.4s, 2.0s; }
+.flor-svg:nth-child(6)  { animation-delay: 1.7s, 1.2s; }
+.flor-svg:nth-child(7)  { animation-delay: 2.0s, 0.6s; }
+.flor-svg:nth-child(8)  { animation-delay: 2.3s, 1.8s; }
+.flor-svg:nth-child(9)  { animation-delay: 2.6s, 2.4s; }
+.flor-svg:nth-child(10) { animation-delay: 2.9s, 0.9s; }
+.flor-svg:nth-child(11) { animation-delay: 0.4s, 1.6s; }
+.flor-svg:nth-child(12) { animation-delay: 0.7s, 2.2s; }
+
+/* ===== FIN FLORES ===== */
+
 /* ESTRUCTURA 3D BLINDADA (640PX FIJOS) */
 .escena-libro { display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; perspective: 2000px; }
 
@@ -126,12 +171,68 @@ button { width: 100%; padding: 14px; margin-top: 15px; background-color: #8e5f38
 
 /* TIPOGRAFÍAS */
 .titulo-capitulo { color: #4a2f1d; font-family: 'Playfair Display', serif; text-align: center; border-bottom: 2px solid #cbb295; padding-bottom: 8px; margin-top: 10px; font-size: 24px; }
-.texto-libro { color: #5a4030; font-size: 14px; line-height: 1.6; text-align: justify; font-family: 'Poppins', sans-serif; margin-top: 15px; }
+
+.texto-libro { 
+    color: #5a4030; 
+    font-size: 14px; 
+    line-height: 1.6; 
+    text-align: justify; 
+    font-family: 'Poppins', sans-serif; 
+    margin-top: 15px; 
+    margin-bottom: 50px;
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 5px; 
+}
+
+.texto-libro::-webkit-scrollbar { width: 4px; }
+.texto-libro::-webkit-scrollbar-track { background: transparent; }
+.texto-libro::-webkit-scrollbar-thumb { background: #cbb295; border-radius: 4px; }
 
 .btn-siguiente {
-    margin-top: auto; align-self: flex-end; width: auto; padding: 7px 22px;
-    background-color: #8e5f38; color: white; border: none; border-radius: 6px;
-    cursor: pointer; font-weight: 600; font-family: 'Poppins', sans-serif; box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    width: auto; 
+    padding: 8px 24px;
+    background-color: #8e5f38; 
+    color: white; 
+    border: none; 
+    border-radius: 6px;
+    cursor: pointer; 
+    font-weight: 600; 
+    font-family: 'Poppins', sans-serif; 
+    box-shadow: 0 4px 10px rgba(142, 95, 56, 0.4);
+    z-index: 10;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-siguiente:hover {
+    transform: scale(1.05);
+    background-color: #7a4f2e;
+}
+
+.btn-anterior {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    width: auto; 
+    padding: 8px 24px;
+    background-color: #a07855;
+    color: white; 
+    border: none; 
+    border-radius: 6px;
+    cursor: pointer; 
+    font-weight: 600; 
+    font-family: 'Poppins', sans-serif; 
+    box-shadow: 0 4px 10px rgba(142, 95, 56, 0.3);
+    z-index: 10;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-anterior:hover {
+    transform: scale(1.05);
+    background-color: #8e5f38;
 }
 
 /* DETALLES DE LAS ESQUINAS METÁLICAS DE LA BASE */
