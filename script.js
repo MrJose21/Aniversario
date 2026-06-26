@@ -128,17 +128,7 @@ function construirPaginasEnDOM(paginas) {
         hoja.id           = idNueva;
         hoja.style.zIndex = zBase - i;
 
-        // Frente – texto
-        const frente = document.createElement("div");
-        frente.className = "frente-pagina";
-        frente.innerHTML = `
-            <h2 class="titulo-capitulo">${pag.titulo}</h2>
-            <p class="texto-libro">${pag.texto}</p>
-            <button class="btn-anterior" onclick="volverPagina(event,'${idAnterior}')">Anterior</button>
-            ${idSiguiente ? `<button class="btn-siguiente" onclick="pasarPagina(event,'${idNueva}')">Siguiente</button>` : ""}
-        `;
-
-        // Dorso – foto desde Storage URL
+        // 1. AHORA EL DORSO VA PRIMERO
         const dorso = document.createElement("div");
         dorso.className = "dorso-pagina";
         dorso.innerHTML = `
@@ -150,8 +140,19 @@ function construirPaginasEnDOM(paginas) {
                 <img src="${pag.imagenUrl}" alt="Página de Dayana">
             </div>`;
 
-        hoja.appendChild(frente);
-        hoja.appendChild(dorso);
+        // 2. AHORA EL FRENTE VA DESPUÉS
+        const frente = document.createElement("div");
+        frente.className = "frente-pagina";
+        frente.innerHTML = `
+            <h2 class="titulo-capitulo">${pag.titulo}</h2>
+            <p class="texto-libro">${pag.texto}</p>
+            <button class="btn-anterior" onclick="volverPagina(event,'${idAnterior}')">Anterior</button>
+            ${idSiguiente ? `<button class="btn-siguiente" onclick="pasarPagina(event,'${idNueva}')">Siguiente</button>` : ""}
+        `;
+
+        // 3. INVERTIMOS EL ORDEN DE INSERCIÓN
+        hoja.appendChild(dorso);  
+        hoja.appendChild(frente); 
         libro.appendChild(hoja);
     });
 
