@@ -228,10 +228,9 @@ async function guardarPagina() {
 
     try {
         // 1. Subir imagen a Cloudinary (sin servidor, upload preset unsigned)
-        const formData = new FormData();
+       const formData = new FormData();
         formData.append("file", archivo);
         formData.append("upload_preset", CLOUDINARY_PRESET);
-        formData.append("folder", "libro_recuerdos");
 
         const res = await fetch(
             `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/image/upload`,
