@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
 /* Cloudinary config */
 const CLOUDINARY_CLOUD = "dzuymoznp";
-const CLOUDINARY_PRESET = "libro de recuerdos";
+const CLOUDINARY_PRESET = "libro_de_recuerdos";
 
 /* ============================================================
    AUTENTICACIÓN
