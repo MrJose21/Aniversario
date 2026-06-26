@@ -29,7 +29,7 @@ function iniciarSesion() {
     const pass = document.getElementById("password").value;
     const errorMsg = document.getElementById("error-msg");
 
-    const esJose   = (user === "jose"        && pass === "567u8");
+    const esJose   = (user === "jose"        && pass === "567tu8");
     const esDayana = (user === "dayana rojas" && pass === "FelizAniversar");
 
     if (esJose || esDayana) {
