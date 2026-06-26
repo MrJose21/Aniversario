@@ -248,3 +248,293 @@ button { width: 100%; padding: 14px; margin-top: 15px; background-color: #8e5f38
 .centro-religioso h1 { font-family: 'Playfair Display', serif; color: #f3dfa2; font-size: 24px; margin-bottom: 15px; }
 .adorno-central { font-size: 30px; margin-bottom: 15px; }
 .centro-religioso p { color: #d1bfa7; font-size: 13px; font-style: italic; }
+
+/* ============================================================
+   BOTÓN FLOTANTE ADMIN (solo visible para Dayana)
+   ============================================================ */
+#btn-admin-flotante {
+    display: none;            /* se muestra por JS solo si es Dayana */
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8e5f38, #c9956a);
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+#btn-admin-flotante:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+}
+#btn-admin-flotante::after {
+    content: "Agregar página";
+    position: absolute;
+    right: 62px;
+    background: rgba(30,15,5,0.85);
+    color: #f3dfa2;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    white-space: nowrap;
+    padding: 4px 10px;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+#btn-admin-flotante:hover::after { opacity: 1; }
+
+/* ============================================================
+   MODAL ADMIN
+   ============================================================ */
+#modal-admin {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(20, 10, 5, 0.75);
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-box {
+    background: linear-gradient(160deg, #fdf6e8 0%, #f5edd6 100%);
+    border: 2px solid #cbb295;
+    border-radius: 18px;
+    padding: 36px 32px 28px;
+    width: min(520px, 94vw);
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.admin-box h3 {
+    font-family: 'Playfair Display', serif;
+    color: #4a2f1d;
+    font-size: 22px;
+    margin: 0 0 6px;
+    text-align: center;
+}
+.admin-box .admin-subtitle {
+    color: #9e7b5a;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.admin-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b4226;
+    margin-bottom: 5px;
+    margin-top: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.admin-input, .admin-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #cbb295;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.85);
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #4a2f1d;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+.admin-input:focus, .admin-textarea:focus { border-color: #8e5f38; }
+.admin-textarea { height: 100px; resize: vertical; }
+
+/* Zona de subida de imagen */
+.admin-img-zona {
+    border: 2px dashed #cbb295;
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+    background: rgba(255,255,255,0.5);
+    margin-top: 4px;
+}
+.admin-img-zona p {
+    font-size: 12px;
+    color: #9e7b5a;
+    margin: 6px 0 10px;
+}
+.admin-img-zona input[type="file"] { display: none; }
+.admin-img-zona label.pick-file {
+    display: inline-block;
+    padding: 7px 18px;
+    background: #8e5f38;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+.admin-img-zona label.pick-file:hover { background: #7a4f2e; }
+
+.admin-separador {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+    color: #cbb295;
+    font-size: 11px;
+}
+.admin-separador::before, .admin-separador::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #cbb295;
+}
+
+#admin-img-preview {
+    display: none;
+    width: 100%;
+    max-height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 10px;
+    border: 2px solid #cbb295;
+}
+
+/* Botones del modal */
+.admin-acciones {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+.btn-guardar {
+    flex: 1;
+    padding: 12px;
+    background: linear-gradient(135deg, #8e5f38, #c9956a);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 14px rgba(142,95,56,0.4);
+}
+.btn-guardar:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(142,95,56,0.5); }
+
+.btn-cancelar {
+    padding: 12px 20px;
+    background: transparent;
+    color: #8e5f38;
+    border: 1.5px solid #cbb295;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.15s;
+}
+.btn-cancelar:hover { background: rgba(203,178,149,0.2); }
+
+#admin-msg {
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 18px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Divider */
+.admin-divider {
+    border: none;
+    border-top: 1.5px solid #e5d5be;
+    margin: 24px 0 16px;
+}
+
+/* Lista de páginas guardadas */
+.admin-lista-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: #4a2f1d;
+    margin-bottom: 10px;
+}
+
+#admin-lista { display: flex; flex-direction: column; gap: 8px; }
+
+.admin-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid #e0cdb5;
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+.admin-item img {
+    width: 50px; height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #cbb295;
+    flex-shrink: 0;
+}
+.admin-item-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.admin-item-info strong {
+    font-size: 13px;
+    color: #4a2f1d;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.admin-item-info span {
+    font-size: 11px;
+    color: #9e7b5a;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.admin-item-del {
+    background: #f5edd6;
+    border: 1px solid #cbb295;
+    color: #b71c1c;
+    border-radius: 6px;
+    width: 28px; height: 28px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+    transition: background 0.15s;
+}
+.admin-item-del:hover { background: #fce8e8; }
+
+/* Botón cerrar modal */
+.admin-cerrar {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #9e7b5a;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.15s;
+}
+.admin-cerrar:hover { color: #4a2f1d; }
