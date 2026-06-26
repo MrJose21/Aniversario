@@ -109,7 +109,36 @@ async function cargarPaginasDesdeFirebase() {
 
 /* Construye las hojas extra en el DOM a partir de un array de páginas */
 function construirPaginasEnDOM(paginas) {
+    // 1. Limpiamos las hojas extra previas para reconstruir
     document.querySelectorAll(".hoja-extra").forEach(h => h.remove());
+
+    // --- MAGIA: PREPARAR EL DORSO DE LA HOJA 10 ---
+    // Buscamos la hoja10 para pegar la primera foto en su espalda
+    const hoja10 = document.getElementById("hoja10");
+    if (hoja10) {
+        let dorso10 = hoja10.querySelector(".dorso-pagina");
+        if (!dorso10) {
+            dorso10 = document.createElement("div");
+            dorso10.className = "dorso-pagina";
+            hoja10.appendChild(dorso10);
+        }
+        // Si hay memorias guardadas, la Foto #1 va detrás de la hoja 10
+        if (paginas.length > 0) {
+            dorso10.innerHTML = `
+                <div class="papel-foto">
+                    <div class="esquinera-foto top-left"></div>
+                    <div class="esquinera-foto top-right"></div>
+                    <div class="esquinera-foto bottom-left"></div>
+                    <div class="esquinera-foto bottom-right"></div>
+                    <img src="${paginas[0].imagenUrl}" alt="Recuerdo">
+                </div>`;
+        } else {
+            // Si no hay extras, la dejamos del color de la tapa
+            dorso10.innerHTML = `<div style="width:100%; height:100%; background-color:#3a2518;"></div>`;
+        }
+    }
+    // ----------------------------------------------
+
     if (paginas.length === 0) {
         actualizarBotonHoja10(false);
         return;
@@ -128,19 +157,7 @@ function construirPaginasEnDOM(paginas) {
         hoja.id           = idNueva;
         hoja.style.zIndex = zBase - i;
 
-        // 1. AHORA EL DORSO VA PRIMERO
-        const dorso = document.createElement("div");
-        dorso.className = "dorso-pagina";
-        dorso.innerHTML = `
-            <div class="papel-foto">
-                <div class="esquinera-foto top-left"></div>
-                <div class="esquinera-foto top-right"></div>
-                <div class="esquinera-foto bottom-left"></div>
-                <div class="esquinera-foto bottom-right"></div>
-                <img src="${pag.imagenUrl}" alt="Página de Dayana">
-            </div>`;
-
-        // 2. AHORA EL FRENTE VA DESPUÉS
+        // 2. EL FRENTE: Muestra el TEXTO de la página actual (Lado Derecho)
         const frente = document.createElement("div");
         frente.className = "frente-pagina";
         frente.innerHTML = `
@@ -150,15 +167,30 @@ function construirPaginasEnDOM(paginas) {
             ${idSiguiente ? `<button class="btn-siguiente" onclick="pasarPagina(event,'${idNueva}')">Siguiente</button>` : ""}
         `;
 
-        // 3. INVERTIMOS EL ORDEN DE INSERCIÓN
-        hoja.appendChild(dorso);  
-        hoja.appendChild(frente); 
+        // 3. EL DORSO: Muestra la FOTO de la SIGUIENTE página (Lado Izquierdo cuando la voltees)
+        const dorso = document.createElement("div");
+        dorso.className = "dorso-pagina";
+        if (paginas[i+1]) {
+            dorso.innerHTML = `
+                <div class="papel-foto">
+                    <div class="esquinera-foto top-left"></div>
+                    <div class="esquinera-foto top-right"></div>
+                    <div class="esquinera-foto bottom-left"></div>
+                    <div class="esquinera-foto bottom-right"></div>
+                    <img src="${paginas[i+1].imagenUrl}" alt="Recuerdo">
+                </div>`;
+        } else {
+            dorso.innerHTML = `<div style="width:100%; height:100%; background-color:#3a2518;"></div>`;
+        }
+
+        // Insertamos en el orden natural: Frente, luego Dorso
+        hoja.appendChild(frente);
+        hoja.appendChild(dorso);
         libro.appendChild(hoja);
     });
 
     actualizarBotonHoja10(true, "hoja-extra-" + paginas[0].firestoreId);
 }
-
 function actualizarBotonHoja10(hayExtras, idPrimera) {
     const frente10 = document.querySelector("#hoja10 .frente-pagina");
     if (!frente10) return;
