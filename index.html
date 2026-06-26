@@ -12,10 +12,9 @@
 <body>
 
     <div class="collage-background"></div>
-
-    <!-- FLORES DECORATIVAS (se llenan por JS al hacer login) -->
     <div id="flores-entorno"></div>
 
+    <!-- ===== LOGIN ===== -->
     <div id="login-container" class="glass-box">
         <div class="icono-iglesia">🕊️<span class="cross-icon">✝️</span>🕊️</div>
         <h2>Entrar a nuestros recuerdos</h2>
@@ -25,17 +24,17 @@
         <p id="error-msg" class="error-oculto">Datos incorrectos, mi amor ❤️</p>
     </div>
 
+    <!-- ===== LIBRO ===== -->
     <div id="libro-container" style="display: none;">
         <div class="escena-libro">
             <div id="el-libro" class="libro" onclick="abrirLibro()">
-                
-                <!-- CARCASA BASE TRASERA -->
+
                 <div class="libro-base">
                     <div class="esquina tl"></div><div class="esquina tr"></div>
                     <div class="esquina bl"></div><div class="esquina br"></div>
                 </div>
 
-                <!-- PORTADA / FOTO 1 -->
+                <!-- PORTADA -->
                 <div class="hoja" id="hoja-portada" style="z-index: 21;">
                     <div class="frente-portada">
                         <div class="centro-religioso">
@@ -53,13 +52,13 @@
                     </div>
                 </div>
 
-                <!-- HOJA 1: TEXTO 1 / FOTO 2 -->
+                <!-- HOJA 1 -->
                 <div class="hoja" id="hoja1" style="z-index: 20;">
                     <div class="frente-pagina">
                         <h2 class="titulo-capitulo">Feliz Aniversario</h2>
                         <p class="texto-libro">Buenas mi amor, te presento nuestro libro de recuerdos donde espero puedas pasártela bien y disfrutes mucho. Preparé esto con todo el amor del mundo para demostrarte siempre el gran amor que tengo por ti 💖...</p>
-                        <button class="btn-anterior" onclick="volverPagina(event, 'hoja-portada')">Anterior</button>
-                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja1')">Siguiente</button>
+                        <button class="btn-anterior" onclick="volverPagina(event,'hoja-portada')">Anterior</button>
+                        <button class="btn-siguiente" onclick="pasarPagina(event,'hoja1')">Siguiente</button>
                     </div>
                     <div class="dorso-pagina">
                         <div class="papel-foto">
@@ -69,19 +68,14 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- HOJA 2: TEXTO 2 / FOTO 3 -->
+
+                <!-- HOJA 2 -->
                 <div class="hoja" id="hoja2" style="z-index: 19;">
                     <div class="frente-pagina">
                         <h2 class="titulo-capitulo">Capítulo 2</h2>
-                        <p class="texto-libro">7 años eh?, ah sido para mi un largo camino donde siempre ah existido todo tipo de obstaculos pero siempre hemos podido con ellos, estoy orgulloso de siempre poder compartir una gran parte de mi vida contigo y poder 
-                            seguir haciendolo cada dia mas, me llenas siempre con tu amor y con las ganas de que siempre estemos bien haciendo siempre el bien para ambos, me encanta siempre cuando podemos estar felices haciendo lo que mas nos gusta estando jutnos jugando de todo
-                            me enamoras cada dia mas con tu sonrisa y la felicidad y calma que siempre me transmites cada dia y cada noche, me calmas en mis momentos de terror donde gracias a ti siempre me encuentro seguro hablando contigo y cada que estoy sin ti simplemente solo 
-                            me siente lleno de tristeza proque no me gusta estar solo, soy una persona que es muy apegada a lo que ama y estar lejos de ti incluso atravez de una apntalla me hace sentir triste y estarte esperando para que vuelvas a hablar comigo, siempre espero tu 
-                            regreso para poder sentirme como un niño y poder estar feliz con la persona que amo...
-                        </p>
-                        <button class="btn-anterior" onclick="volverPagina(event, 'hoja1')">Anterior</button>
-                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja2')">Siguiente</button>
+                        <p class="texto-libro">7 años eh?, ah sido para mi un largo camino donde siempre ah existido todo tipo de obstaculos pero siempre hemos podido con ellos, estoy orgulloso de siempre poder compartir una gran parte de mi vida contigo y poder seguir haciendolo cada dia mas, me llenas siempre con tu amor y con las ganas de que siempre estemos bien haciendo siempre el bien para ambos, me encanta siempre cuando podemos estar felices haciendo lo que mas nos gusta estando jutnos jugando de todo me enamoras cada dia mas con tu sonrisa y la felicidad y calma que siempre me transmites cada dia y cada noche, me calmas en mis momentos de terror donde gracias a ti siempre me encuentro seguro hablando contigo y cada que estoy sin ti simplemente solo me siente lleno de tristeza proque no me gusta estar solo, soy una persona que es muy apegada a lo que ama y estar lejos de ti incluso atravez de una apntalla me hace sentir triste y estarte esperando para que vuelvas a hablar comigo, siempre espero tu regreso para poder sentirme como un niño y poder estar feliz con la persona que amo...</p>
+                        <button class="btn-anterior" onclick="volverPagina(event,'hoja1')">Anterior</button>
+                        <button class="btn-siguiente" onclick="pasarPagina(event,'hoja2')">Siguiente</button>
                     </div>
                     <div class="dorso-pagina">
                         <div class="papel-foto">
@@ -92,18 +86,13 @@
                     </div>
                 </div>
 
-                <!-- HOJA 3: TEXTO 3 / FOTO 4 -->
+                <!-- HOJA 3 -->
                 <div class="hoja" id="hoja3" style="z-index: 18;">
                     <div class="frente-pagina">
                         <h2 class="titulo-capitulo">Capítulo 3</h2>
-                        <p class="texto-libro">Momentos en los que me demuestras que por muy pequeñas que sean las cosas siempre son bonitas y principalmente tu conmigo, siempre has sido una persona demasiado especial en mi vida y siempre le voy a agradecer a dios por ponerme en tu camino
-                            todos los dias resando y deseando algun dia porfin poder estar juntos y poder estar en tantos lugares contigo para compartir muchisimos deseos que tenemos juntos, poder tener muchas mas anecdotas de que reirnos y poder vivir experiencas juntos nuevas todos los dias
-                            me siento una persona demasiado afortunada de tenerte en mi vida, me siento especial, premiado incluso en mis pecados, tener a una persona como tu en mi vida es algo que me ah echo sumamente especial en cuanto a pensamientos y en todo, y nunca me arrepiento siempre de 
-                            intentar demostrarte mi amor de todas las  maneras posibles pese aveces a lo gruñon que puedo llegar a ser, los regalos, los mensajes de amor, lo increible que me puedes llegar a hacer sentir son cosas que siempre alegran mi corazon y poder estarte pensando solo me trae 
-                            paz y alegria para mi y para mi vida, repetire una y mil veces que no me arrepiento para nada de haberte conocido y poder haberme echo tu pareja hasta ahora y todo el tiempo que deseo estar contigo cada dia otorgandote mucho mas amor que el anterior...
-                        </p>
-                        <button class="btn-anterior" onclick="volverPagina(event, 'hoja2')">Anterior</button>
-                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja3')">Siguiente</button>
+                        <p class="texto-libro">Momentos en los que me demuestras que por muy pequeñas que sean las cosas siempre son bonitas y principalmente tu conmigo, siempre has sido una persona demasiado especial en mi vida y siempre le voy a agradecer a dios por ponerme en tu camino todos los dias resando y deseando algun dia porfin poder estar juntos y poder estar en tantos lugares contigo para compartir muchisimos deseos que tenemos juntos, poder tener muchas mas anecdotas de que reirnos y poder vivir experiencas juntos nuevas todos los dias me siento una persona demasiado afortunada de tenerte en mi vida, me siento especial, premiado incluso en mis pecados, tener a una persona como tu en mi vida es algo que me ah echo sumamente especial en cuanto a pensamientos y en todo, y nunca me arrepiento siempre de intentar demostrarte mi amor de todas las  maneras posibles pese aveces a lo gruñon que puedo llegar a ser, los regalos, los mensajes de amor, lo increible que me puedes llegar a hacer sentir son cosas que siempre alegran mi corazon y poder estarte pensando solo me trae paz y alegria para mi y para mi vida, repetire una y mil veces que no me arrepiento para nada de haberte conocido y poder haberme echo tu pareja hasta ahora y todo el tiempo que deseo estar contigo cada dia otorgandote mucho mas amor que el anterior...</p>
+                        <button class="btn-anterior" onclick="volverPagina(event,'hoja2')">Anterior</button>
+                        <button class="btn-siguiente" onclick="pasarPagina(event,'hoja3')">Siguiente</button>
                     </div>
                     <div class="dorso-pagina">
                         <div class="papel-foto">
@@ -114,18 +103,13 @@
                     </div>
                 </div>
 
-                <!-- HOJA 4: TEXTO 4 / FOTO 5 -->
+                <!-- HOJA 4 -->
                 <div class="hoja" id="hoja4" style="z-index: 17;">
                     <div class="frente-pagina">
                         <h2 class="titulo-capitulo">Capítulo 4</h2>
-                        <p class="texto-libro">"Me encantas" es una palabra que eh usado quien sabe cuantas veces contigo por lo increible que siempre te puedes llegar a ver ante mis ojos, siempre me emociona poder verte feliz probando algo o usando algo que a ti te encante, te conviertes en una niña 
-                            demasiado linda contagiandome a mi incluso de tal felicidad que llegas a desprender, en mi camino eres la luz que siempre me esta guiando por el buen camino incluso en momentos donde no debo ahcer cosas siempre estas ahi ayudandome a ahcer mejor persona cada dia, y eso siempre
-                            lo eh tenido en cuenta, aparte de mi pareja, siempre te has portado como una consejera, madre y todo lo posible para que en cualquier circunstancia pueda verme bien y poder seguir mejorando aplicadamente para el futuro de ambos, siempre encontrando soluciones que aveces por mi 
-                            parte no son posibles de encontrar y alegrandome todos los dias co tus llamadas, tus audios e incluso con tus te amo, me gustas mucho y eres una persona tan especial para mi que aunque aveces no lo parezca siempre eres importante en mi corazon, no me gusta ni verte mal ni vernos mal
-                            porque no me gusta hacerte llorar aunque en mi terquedad muchas veces suceda asi, aun asi quiero que nunca olvides que siempre te voy a estar amando con todo mi corazon y siempre podras contar conmigo para lo que quieras en absolutamente todo mi corazon hermoso ❤️❤️❤️
-                        </p>
-                        <button class="btn-anterior" onclick="volverPagina(event, 'hoja3')">Anterior</button>
-                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja4')">Siguiente</button>
+                        <p class="texto-libro">"Me encantas" es una palabra que eh usado quien sabe cuantas veces contigo por lo increible que siempre te puedes llegar a ver ante mis ojos, siempre me emociona poder verte feliz probando algo o usando algo que a ti te encante, te conviertes en una niña demasiado linda contagiandome a mi incluso de tal felicidad que llegas a desprender, en mi camino eres la luz que siempre me esta guiando por el buen camino incluso en momentos donde no debo ahcer cosas siempre estas ahi ayudandome a ahcer mejor persona cada dia, y eso siempre lo eh tenido en cuenta, aparte de mi pareja, siempre te has portado como una consejera, madre y todo lo posible para que en cualquier circunstancia pueda verme bien y poder seguir mejorando aplicadamente para el futuro de ambos, siempre encontrando soluciones que aveces por mi parte no son posibles de encontrar y alegrandome todos los dias co tus llamadas, tus audios e incluso con tus te amo, me gustas mucho y eres una persona tan especial para mi que aunque aveces no lo parezca siempre eres importante en mi corazon, no me gusta ni verte mal ni vernos mal porque no me gusta hacerte llorar aunque en mi terquedad muchas veces suceda asi, aun asi quiero que nunca olvides que siempre te voy a estar amando con todo mi corazon y siempre podras contar conmigo para lo que quieras en absolutamente todo mi corazon hermoso ❤️❤️❤️</p>
+                        <button class="btn-anterior" onclick="volverPagina(event,'hoja3')">Anterior</button>
+                        <button class="btn-siguiente" onclick="pasarPagina(event,'hoja4')">Siguiente</button>
                     </div>
                     <div class="dorso-pagina">
                         <div class="papel-foto">
@@ -136,18 +120,13 @@
                     </div>
                 </div>
 
-                <!-- HOJA 5: TEXTO 5 / FOTO 6 -->
+                <!-- HOJA 5 -->
                 <div class="hoja" id="hoja5" style="z-index: 16;">
                     <div class="frente-pagina">
                         <h2 class="titulo-capitulo">Capítulo 5</h2>
-                        <p class="texto-libro">universidad y estudios, algo que siempre me ah gustado por lo mucho que te esfuerzas en logar tus objetivos y siempre estar sobresaliente, esa responsabilidad que siempre cargas para que todo te salga bien y puedas disfrutar de esos esfuerzos que tanto haces cada dia
-                            para poder prepararte como una profesional que tanto quieres, siempre quieres estar aprendiendo aunque te estes quejando de que nunca te gusta levantarte temprano pero siempre tomas esa responsabilidad de hacerlo y poder estarte superando cada dia con todos los logros que has conseguido
-                            y lo mucho que te has esmerado en poder conseguirlos, pocas pero has logrado muchas de las metas que te has propuesto y eso siempre me va a alegrar para celebrar contigo siempre en cada una de tus victorias, y en las caidas siempre estare a tu lado para tenderte la mano para levantarte 
-                            y poder seguir intentandolo, porque en esta vida siempre se puede todo y no estamos para rendirnos ni ahora ni despues, siempre hay que dar lo mejor de nosotros y poder estar disfrutando de lo que se pueda hacer ahora y lo que recogeremos despues, me encanta mucho lo estudiosa que eres
-                            sigue esforzandote por todas esas cosas que tanto quieres y veras como la vida y el futuro que te espera esta lleno de cosas hermosas y bonitas para nuestra vida, espero poder seguir muchisimos años mas y poder seguir compartiendo muchos recuerdos mas contigo mi amada hermosa ❤️❤️
-                        </p>
-                        <button class="btn-anterior" onclick="volverPagina(event, 'hoja4')">Anterior</button>
-                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja5')">Siguiente</button>
+                        <p class="texto-libro">universidad y estudios, algo que siempre me ah gustado por lo mucho que te esfuerzas en logar tus objetivos y siempre estar sobresaliente, esa responsabilidad que siempre cargas para que todo te salga bien y puedas disfrutar de esos esfuerzos que tanto haces cada dia para poder prepararte como una profesional que tanto quieres, siempre quieres estar aprendiendo aunque te estes quejando de que nunca te gusta levantarte temprano pero siempre tomas esa responsabilidad de hacerlo y poder estarte superando cada dia con todos los logros que has conseguido y lo mucho que te has esmerado en poder conseguirlos, pocas pero has logrado muchas de las metas que te has propuesto y eso siempre me va a alegrar para celebrar contigo siempre en cada una de tus victorias, y en las caidas siempre estare a tu lado para tenderte la mano para levantarte y poder seguir intentandolo, porque en esta vida siempre se puede todo y no estamos para rendirnos ni ahora ni despues, siempre hay que dar lo mejor de nosotros y poder estar disfrutando de lo que se pueda hacer ahora y lo que recogeremos despues, me encanta mucho lo estudiosa que eres sigue esforzandote por todas esas cosas que tanto quieres y veras como la vida y el futuro que te espera esta lleno de cosas hermosas y bonitas para nuestra vida, espero poder seguir muchisimos años mas y poder seguir compartiendo muchos recuerdos mas contigo mi amada hermosa ❤️❤️</p>
+                        <button class="btn-anterior" onclick="volverPagina(event,'hoja4')">Anterior</button>
+                        <button class="btn-siguiente" onclick="pasarPagina(event,'hoja5')">Siguiente</button>
                     </div>
                     <div class="dorso-pagina">
                         <div class="papel-foto">
@@ -158,16 +137,13 @@
                     </div>
                 </div>
 
-                <!-- HOJA 6: TEXTO 6 / FOTO 7 -->
+                <!-- HOJA 6 -->
                 <div class="hoja" id="hoja6" style="z-index: 15;">
                     <div class="frente-pagina">
                         <h2 class="titulo-capitulo">Capítulo 6</h2>
-                        <p class="texto-libro">Juegos y momentos en los que hemos pasado juntos en nuestra privacidad, lo bien que la hemos pasado y lo mucho  que nos hemos divertido siempre en nuestros momentos, siempre pasandola bien y sonriendo aveces incluso estando en llamada poder estar dsifrutando de lo que 
-                            andamos jugando, sea privado o publico, agradezco cada dia poder estar siempre compartiendo momentos contigo apesar de no estar juntos en persona, el tiempo que puedes llegar a dedicarme y los momentos felices que podemos llegar a pasar, te agradecere una y mil veces por siempre estar 
-                            soportandome en mis peores momentos incluso cuando suelo tratar mal sin ser conciente de ello, gracias por siempre tenerme pasciencia en todo lo que puedo llegar a hacer incorrecto y siempre estarmelo diciendo de la mejor manera para que pueda seguir mejorando para ti 
-                        </p>
-                        <button class="btn-anterior" onclick="volverPagina(event, 'hoja5')">Anterior</button>
-                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja6')">Siguiente</button>
+                        <p class="texto-libro">Juegos y momentos en los que hemos pasado juntos en nuestra privacidad, lo bien que la hemos pasado y lo mucho  que nos hemos divertido siempre en nuestros momentos, siempre pasandola bien y sonriendo aveces incluso estando en llamada poder estar dsifrutando de lo que andamos jugando, sea privado o publico, agradezco cada dia poder estar siempre compartiendo momentos contigo apesar de no estar juntos en persona, el tiempo que puedes llegar a dedicarme y los momentos felices que podemos llegar a pasar, te agradecere una y mil veces por siempre estar soportandome en mis peores momentos incluso cuando suelo tratar mal sin ser conciente de ello, gracias por siempre tenerme pasciencia en todo lo que puedo llegar a hacer incorrecto y siempre estarmelo diciendo de la mejor manera para que pueda seguir mejorando para ti</p>
+                        <button class="btn-anterior" onclick="volverPagina(event,'hoja5')">Anterior</button>
+                        <button class="btn-siguiente" onclick="pasarPagina(event,'hoja6')">Siguiente</button>
                     </div>
                     <div class="dorso-pagina">
                         <div class="papel-foto">
@@ -178,16 +154,13 @@
                     </div>
                 </div>
 
-                <!-- HOJA 7: TEXTO 7 / FOTO 8 -->
+                <!-- HOJA 7 -->
                 <div class="hoja" id="hoja7" style="z-index: 14;">
                     <div class="frente-pagina">
                         <h2 class="titulo-capitulo">Capítulo 7</h2>
-                        <p class="texto-libro">Momentos bastante ramdoms que has pasado o que incluso me has mandado de cuando hemos estado compartiendo en llamada o videos, fotos o algo de lo que estes haciendo que consideres ramdom pese a que algunas veces no lo es, pero verte divirtiendote con esas cosas asi, me hace feliz
-                            porque la pasa bien a pesar de todo, siempre puedes estarte divirtiendo si problemas y poder estar disfrutando de momentos inolvidables con todos, incluso nosotros en llamada cuando hacemos nuestros momentos ramdoms de estar peleando, o si no chismeando por llamada por cualquier tonteria, ten en cuenta quejando
-                            a mi siempre me estas haciendo feliz con esa clase de cosas ramdoms o incluso tu haciendo cosas unicamente para poder estar divirtiendonos
-                        </p>
-                        <button class="btn-anterior" onclick="volverPagina(event, 'hoja6')">Anterior</button>
-                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja7')">Siguiente</button>
+                        <p class="texto-libro">Momentos bastante ramdoms que has pasado o que incluso me has mandado de cuando hemos estado compartiendo en llamada o videos, fotos o algo de lo que estes haciendo que consideres ramdom pese a que algunas veces no lo es, pero verte divirtiendote con esas cosas asi, me hace feliz porque la pasa bien a pesar de todo, siempre puedes estarte divirtiendo si problemas y poder estar disfrutando de momentos inolvidables con todos, incluso nosotros en llamada cuando hacemos nuestros momentos ramdoms de estar peleando, o si no chismeando por llamada por cualquier tonteria, ten en cuenta quejando a mi siempre me estas haciendo feliz con esa clase de cosas ramdoms o incluso tu haciendo cosas unicamente para poder estar divirtiendonos</p>
+                        <button class="btn-anterior" onclick="volverPagina(event,'hoja6')">Anterior</button>
+                        <button class="btn-siguiente" onclick="pasarPagina(event,'hoja7')">Siguiente</button>
                     </div>
                     <div class="dorso-pagina">
                         <div class="papel-foto">
@@ -198,17 +171,13 @@
                     </div>
                 </div>
 
-                <!-- HOJA 8: TEXTO 8 / FOTO 9 -->
+                <!-- HOJA 8 -->
                 <div class="hoja" id="hoja8" style="z-index: 13;">
                     <div class="frente-pagina">
                         <h2 class="titulo-capitulo">Capítulo 8</h2>
-                        <p class="texto-libro">Peluches y de tantas cosas que me has mostrado, desde el gato redondo hasta tu oso de peluche que estabas haciendo en la escuela, cosas asi de pequeñas comaprtiendome tu experiencia en como te diviertes con todo lo que sueles hacer siempre
-                            un poco aveces ramdom para mi ver tantos muñecos juntos y como puedes llegar a dormir comoda sin que puedas imaginar que se pueden llegar a mover o algo en lo que estes haciendo, aun asi, en la mayoria de los tiempos, siempre suelo verte feliz con todos los 
-                            muñecos que sueles llevar, o por lo menos los pocos que me has mostrado (si se le pueden decir poco a todo lo que me has mostrado en la cama quedamos cortos) por mi parte con eso soy demasiado paranoico, asi que yo prefiero de lejos por mucho que llegues a quererlos
-                            aun asi, sigo recalcando lo feliz que puedes llegar a ser con cosasa tan pequeñas como esas y todo lo que puedas llegar a jugar con ellos, espero puedas seguir divirtiendote con eso y alejalos de mi durante las noches, prefiero tenerlos bien lejos de mi, asi estoy bien
-                        </p>
-                        <button class="btn-anterior" onclick="volverPagina(event, 'hoja7')">Anterior</button>
-                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja8')">Siguiente</button>
+                        <p class="texto-libro">Peluches y de tantas cosas que me has mostrado, desde el gato redondo hasta tu oso de peluche que estabas haciendo en la escuela, cosas asi de pequeñas comaprtiendome tu experiencia en como te diviertes con todo lo que sueles hacer siempre un poco aveces ramdom para mi ver tantos muñecos juntos y como puedes llegar a dormir comoda sin que puedas imaginar que se pueden llegar a mover o algo en lo que estes haciendo, aun asi, en la mayoria de los tiempos, siempre suelo verte feliz con todos los muñecos que sueles llevar, o por lo menos los pocos que me has mostrado (si se le pueden decir poco a todo lo que me has mostrado en la cama quedamos cortos) por mi parte con eso soy demasiado paranoico, asi que yo prefiero de lejos por mucho que llegues a quererlos aun asi, sigo recalcando lo feliz que puedes llegar a ser con cosasa tan pequeñas como esas y todo lo que puedas llegar a jugar con ellos, espero puedas seguir divirtiendote con eso y alejalos de mi durante las noches, prefiero tenerlos bien lejos de mi, asi estoy bien</p>
+                        <button class="btn-anterior" onclick="volverPagina(event,'hoja7')">Anterior</button>
+                        <button class="btn-siguiente" onclick="pasarPagina(event,'hoja8')">Siguiente</button>
                     </div>
                     <div class="dorso-pagina">
                         <div class="papel-foto">
@@ -219,17 +188,13 @@
                     </div>
                 </div>
 
-                <!-- HOJA 9: TEXTO 9 / FOTO 10 -->
+                <!-- HOJA 9 -->
                 <div class="hoja" id="hoja9" style="z-index: 12;">
                     <div class="frente-pagina">
                         <h2 class="titulo-capitulo">Capítulo 9</h2>
-                        <p class="texto-libro">Gracias por siempre estar compartiendo experiencias conmigo y todo lo bueno que hemos llegado a construir, siempre eh sido y sere feliz a tu lado a pesar de nuestras pocas diferencias, siempre seras con la persona que querre estar,
-                            pese a todos los obstaculos que nos vengan por todo nuestro camino, espero poder superar todos y cada uno de ellos a tu lado siendo felices y siempre esforzandonos para ser alguien mucho mejor para el otro, apoyarnos mutuamente y poder siempre estar 
-                            para la otra persona dispuesta a todo, te doy las gracias por estar siempre a mi lado por tantos años, ayer, hoy, mañana y todo el tiempo que nos quede por delante, espero puedas leer esto con cariño y puedas guardarlo como un recuerdo que fue echo 
-                            con amor para ti, no fue nada sencillo pero siempre me esmero por darte de la manera que puedo cosas para que puedas estar feliz y no solo ser yo quien reciba en la relacion ❤️❤️❤️
-                        </p>
-                        <button class="btn-anterior" onclick="volverPagina(event, 'hoja8')">Anterior</button>
-                        <button class="btn-siguiente" onclick="pasarPagina(event, 'hoja9')">Siguiente</button>
+                        <p class="texto-libro">Gracias por siempre estar compartiendo experiencias conmigo y todo lo bueno que hemos llegado a construir, siempre eh sido y sere feliz a tu lado a pesar de nuestras pocas diferencias, siempre seras con la persona que querre estar, pese a todos los obstaculos que nos vengan por todo nuestro camino, espero poder superar todos y cada uno de ellos a tu lado siendo felices y siempre esforzandonos para ser alguien mucho mejor para el otro, apoyarnos mutuamente y poder siempre estar para la otra persona dispuesta a todo, te doy las gracias por estar siempre a mi lado por tantos años, ayer, hoy, mañana y todo el tiempo que nos quede por delante, espero puedas leer esto con cariño y puedas guardarlo como un recuerdo que fue echo con amor para ti, no fue nada sencillo pero siempre me esmero por darte de la manera que puedo cosas para que puedas estar feliz y no solo ser yo quien reciba en la relacion ❤️❤️❤️</p>
+                        <button class="btn-anterior" onclick="volverPagina(event,'hoja8')">Anterior</button>
+                        <button class="btn-siguiente" onclick="pasarPagina(event,'hoja9')">Siguiente</button>
                     </div>
                     <div class="dorso-pagina">
                         <div class="papel-foto">
@@ -240,24 +205,61 @@
                     </div>
                 </div>
 
-                <!-- HOJA 10: ÚLTIMA HOJA -->
+                <!-- HOJA 10 – CIERRE (las páginas extra se insertan después de esta) -->
                 <div class="hoja" id="hoja10" style="z-index: 11;">
                     <div class="frente-pagina">
                         <h2 class="titulo-capitulo">Por Siempre Juntos</h2>
-                        <p class="texto-libro" style="text-align: center; font-style: italic; font-size: 15px; margin-top: 30px;">
+                        <p class="texto-libro" style="text-align:center;font-style:italic;font-size:15px;margin-top:30px;">
                             "Gracias por cada sonrisa, por cada oración compartida y por ser mi compañera idónea. Le pido a Dios que este sea solo el inicio de una eternidad a tu lado. Te amo con toda mi alma."
                         </p>
-                        <div style="font-size: 40px; text-align: center; margin-top: 20px;"></div>
-                        <button class="btn-anterior" onclick="volverPagina(event, 'hoja9')">Anterior</button>
+                        <div style="font-size:40px;text-align:center;margin-top:20px;"></div>
+                        <button class="btn-anterior" onclick="volverPagina(event,'hoja9')">Anterior</button>
+                        <!-- El btn-siguiente hacia páginas extra se agrega por JS si existen -->
                     </div>
-                    <div class="dorso-pagina" style="background: linear-gradient(135deg, #3e2723 0%, #2a160c 100%);">
-                    </div>
+                    <div class="dorso-pagina" style="background:linear-gradient(135deg,#3e2723 0%,#2a160c 100%);"></div>
                 </div>
 
+            </div><!-- fin #el-libro -->
+        </div><!-- fin .escena-libro -->
+    </div><!-- fin #libro-container -->
+
+    <!-- ===== BOTÓN FLOTANTE ADMIN ===== -->
+    <button id="btn-admin-flotante" onclick="abrirAdmin()" title="Agregar página">🌸</button>
+
+    <!-- ===== MODAL ADMIN ===== -->
+    <div id="modal-admin">
+        <div class="admin-box">
+            <button class="admin-cerrar" onclick="cerrarAdmin()">✕</button>
+
+            <h3>✍️ Agregar nueva página</h3>
+            <p class="admin-subtitle">Tu página aparecerá al final del libro y se guardará para siempre.</p>
+
+            <label class="admin-label" for="admin-titulo">Título de la página</label>
+            <input class="admin-input" type="text" id="admin-titulo" placeholder="Ej: Un recuerdo especial…">
+
+            <label class="admin-label" for="admin-texto">Tu mensaje</label>
+            <textarea class="admin-textarea" id="admin-texto" placeholder="Escribe lo que quieras recordar…"></textarea>
+
+            <label class="admin-label">Foto de la página</label>
+            <div class="admin-img-zona">
+                <input type="file" id="admin-img-file" accept="image/*">
+                <label class="pick-file" for="admin-img-file">📷 Elegir foto desde tu dispositivo</label>
+                <p>Máximo 8 MB · JPG, PNG, WEBP — se sube a la nube automáticamente</p>
+                <img id="admin-img-preview" src="" alt="Vista previa">
             </div>
+
+            <div class="admin-acciones">
+                <button class="btn-guardar" onclick="guardarPagina()">💾 Guardar en el libro</button>
+                <button class="btn-cancelar" onclick="cerrarAdmin()">Cancelar</button>
+            </div>
+            <p id="admin-msg"></p>
+
+            <hr class="admin-divider">
+            <p class="admin-lista-titulo">📖 Páginas que has agregado</p>
+            <div id="admin-lista"></div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
